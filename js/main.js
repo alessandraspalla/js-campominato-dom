@@ -1,6 +1,7 @@
 // Prendo il riferimento agli elementi del DOM
 const playBtn = document.getElementById('play');
 const containerGrid = document.getElementById('container');
+const stopGame = document.getElementById('stop');
 
 //Array
 let bombsArray = [];
@@ -15,7 +16,7 @@ playBtn.addEventListener('click', startGame);
 // Funzione per startare il gioco
 function startGame() {
     containerGrid.innerHTML = '';
-
+    stopGame.classList.add('none');
     // Mi salvo il valore della difficoltà scelta per il gioco
     const difficult = document.getElementById('difficult').value;
 
@@ -65,8 +66,8 @@ function createRandomNum(newMin, newMax) {
 function onSquareClick(i, square){
     if (bombsArray.includes(i)) {
         square.classList.add('bc-red');
-        stopGame.style.display = 'block';
         alert('Hai beccato una bomba, riavvia per riprovare');
+        stopGame.classList.remove('none');
     } else {
         square.classList.add('bc-blue');
     }
